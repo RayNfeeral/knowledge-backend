@@ -8,6 +8,7 @@ require('./config/mongodb')
 app.db = db
 app.mongoose = mongoose
 
+
 consign()
     .include('./config/passport.js')
     .then('./config/middlewares.js')
