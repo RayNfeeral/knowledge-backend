@@ -1,10 +1,10 @@
+const bcrypt = require('bcrypt-nodejs')
 
 exports.seed = function (knex, Promise) {
   // Deletes ALL existing entries
   return knex('users').where({
     name: 'Rafael Nery Machado',
     email: 'rafaelnerymachado@gmail.com',
-    password: 'Rnm=2506@',
     admin: true
   }).first().del()
     .then(function () {
@@ -13,7 +13,7 @@ exports.seed = function (knex, Promise) {
         {
           name: 'Rafael Nery Machado',
           email: 'rafaelnerymachado@gmail.com',
-          password: 'Rnm=2506@',
+          password: bcrypt.hashSync(process.env.ADMIN_PASSWORD, bcrypt.genSaltSync(10)),
           admin: true
         }
       ]);
