@@ -9,8 +9,8 @@ app.db = db
 app.mongoose = mongoose
 
 consign()
-    .include('./config/passport.js')
     .then('./config/middlewares.js')
+    .include('./config/passport.js')
     .then('./api/validation.js')
     .then('./api')
     .then('./schedule')
